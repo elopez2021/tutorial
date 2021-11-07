@@ -1,6 +1,19 @@
-<h1>My To Do List</h1>
-<a href="{% url 'task-create'}">Add Task</a>
+{% if request.user.is_authenticated %}
+<p>{{request.user}}</p>
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'login'%}">Login</a>
+{% endif %}
+<hr>
+<h1>My To Do List  {{color}} </h1>
+<a href="{% url 'task-create'%}">Add Task</a>
 <!--task-create is the url name-->
+
+<form action="" method="get">
+    <input type="text" name='search-area' value="{{search_input}}">
+    <input type="submit" value="Search">
+</form>
+
 <table>
     <tr>
         <th>Item</th>
